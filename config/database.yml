@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: 5
+  username: postgres
+  password:
+
+development:
+  <<: *default
+  database: game_of_life_development
+
+test:
+  <<: *default
+  database: game_of_life_test
+
+production:
+  <<: *default
+  database: game_of_life_production
+  username: game_of_life
+  password: <%= ENV['GAME_OF_LIFE_DATABASE_PASSWORD'] %>

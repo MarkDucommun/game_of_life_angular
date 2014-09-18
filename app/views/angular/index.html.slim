@@ -1,0 +1,20 @@
+div (ng-controller='GameOfLifeController' ng-init='initialize()')
+  button.button (ng-click='toggle()') {{buttonText}}
+  button (ng-click='step()') Step
+  button (ng-click='reset()') Reset
+  button (ng-click='left()') Left
+  button (ng-click='right()') Right
+  button (ng-click='up()') Up
+  button (ng-click='down()') Down
+  button (ng-click='bigger()') +
+  button (ng-click='smaller()') -
+  button
+    span Speed:
+    input (ng-model='speed' type='number')
+  button () Count: {{cellCount()}}
+  button () Generation: {{worlds()}}
+
+  table (cellspacing=0 cellpadding=0)
+    tbody
+      tr (ng-repeat='y in rows' on-finish-render)
+        td (ng-repeat='x in columns' cell x='{{x}}' y='{{y}}' ng-class='{alive: alive()}')
